@@ -3,7 +3,7 @@ package com.healthcare.healthcareapi.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.Instant;
+import java.time.ZonedDateTime;
 
 @Data
 @Builder
@@ -11,9 +11,9 @@ public class VisitDto {
 
     private Long id;
 
-    private Instant start;
+    private ZonedDateTime start;
 
-    private Instant end;
+    private ZonedDateTime end;
 
     private Long patientId;
 

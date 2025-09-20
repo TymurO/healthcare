@@ -1,8 +1,15 @@
 package com.healthcare.healthcareapi.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Doctor")
 @Data
@@ -19,4 +26,8 @@ public class Doctor {
     private String lastName;
 
     private String timezone;
+
+    // Gets number of patients that had visited the doctor
+    @Formula("(select count(distinct v.patient_id) from visit v where v.doctor_id = id)")
+    private int totalPatients;
 }
